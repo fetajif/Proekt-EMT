@@ -12,4 +12,3 @@ WARN 9816 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Cons
 Kafka Version: 3.0.0
 Spring Version: 5.3.22
 JDK Version: 13.0.2
-Java Version: 13
