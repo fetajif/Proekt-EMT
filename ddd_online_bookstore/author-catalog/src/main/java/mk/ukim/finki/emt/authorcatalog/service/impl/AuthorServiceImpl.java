@@ -33,9 +33,14 @@ public class AuthorServiceImpl implements AuthorService {
     }
 
     @Override
-    public void removeAuthor(AuthorId authorId) {
-        Author a = this.findById(authorId);
-        authorRepository.delete(a);
+    public Author editAuthor(AuthorId authorId, AuthorForm authorForm) {
+        this.deleteById(authorId);
+        return this.createAuthor(authorForm);
+    }
+
+    @Override
+    public void deleteById(AuthorId authorId) {
+        authorRepository.deleteById(authorId);
     }
 
     @Override

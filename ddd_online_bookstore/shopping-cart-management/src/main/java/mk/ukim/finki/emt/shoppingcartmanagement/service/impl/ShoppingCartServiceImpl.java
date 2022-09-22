@@ -42,8 +42,8 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
             throw new ConstraintViolationException("The shopping-cart form is not valid", constraintViolations);
         }
         var newShoppingCart = shoppingCartRepository.saveAndFlush(toDomainObject(shoppingCartForm));
-        newShoppingCart.getBookItemList().forEach(item -> domainEventPublisher
-                .publish(new BookItemCreated(item.getBookId().getId(), item.getQuantity())));
+//        newShoppingCart.getBookItemList().forEach(item -> domainEventPublisher
+//                .publish(new BookItemCreated(item.getBookId().getId(), item.getQuantity())));
         return newShoppingCart.getId();
     }
 
@@ -65,7 +65,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
         shoppingCart.addItem(itemForm.getBook(), itemForm.getQuantity());
         shoppingCartRepository.saveAndFlush(shoppingCart);
 
-        domainEventPublisher.publish(new BookItemCreated(itemForm.getBook().getId().getId(), itemForm.getQuantity()));
+//        domainEventPublisher.publish(new BookItemCreated(itemForm.getBook().getId().getId(), itemForm.getQuantity()));
     }
 
     @Override
@@ -78,7 +78,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
         shoppingCart.removeItem(bookItemId);
         shoppingCartRepository.saveAndFlush(shoppingCart);
 
-        domainEventPublisher.publish(new BookItemRemoved(bookItem.getId().getId(), bookItem.getQuantity()));
+//        domainEventPublisher.publish(new BookItemRemoved(bookItem.getId().getId(), bookItem.getQuantity()));
     }
 
     private ShoppingCart toDomainObject(ShoppingCartForm shoppingCartForm) {

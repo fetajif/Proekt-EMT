@@ -41,6 +41,17 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
+    public Book editBook(BookId bookId, BookForm bookForm) {
+        this.deleteById(bookId);
+        return this.createBook(bookForm);
+    }
+
+    @Override
+    public void deleteById(BookId bookId) {
+        this.bookRepository.deleteById(bookId);
+    }
+
+    @Override
     public Book bookItemCreated(BookId bookId, int quantity) {
         Book b = bookRepository.findById(bookId)
                 .orElseThrow(BookNotFoundException::new);

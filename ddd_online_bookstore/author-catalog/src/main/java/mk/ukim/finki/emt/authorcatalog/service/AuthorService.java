@@ -9,6 +9,7 @@ import java.util.List;
 public interface AuthorService {
     Author findById(AuthorId authorId);
     Author createAuthor(AuthorForm authorForm);
-    void removeAuthor(AuthorId authorId);
+    Author editAuthor(AuthorId authorId, AuthorForm authorForm);
+    void deleteById(AuthorId authorId);
     List<Author> findAll();
 }

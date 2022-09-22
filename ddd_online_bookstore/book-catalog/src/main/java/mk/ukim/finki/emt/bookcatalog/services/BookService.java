@@ -9,6 +9,8 @@ import java.util.List;
 public interface BookService {
     Book findById(BookId bookId);
     Book createBook(BookForm bookForm);
+    Book editBook(BookId bookId, BookForm bookForm);
+    void deleteById(BookId bookId);
     Book bookItemCreated(BookId bookId, int quantity);
     Book bookItemRemoved(BookId bookId, int quantity);
     List<Book> findAll();
